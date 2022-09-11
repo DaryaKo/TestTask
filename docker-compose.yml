@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+    restart: always
+
+  mongo-data:
+    build: ./mongo_data
+    depends_on:
+      - db
+
+  app:
+    build:
+      context: ./app
+    container_name: test_app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    restart: always
