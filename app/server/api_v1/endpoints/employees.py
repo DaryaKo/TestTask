@@ -19,7 +19,7 @@ from server.models.employees import (
 server_router = APIRouter()
 
 
-@server_router.get("/",
+@server_router.get("",
     response_model=Page[Employee],
     response_description="Employees list")
 async def get_employees(
